@@ -77,7 +77,7 @@ func TestIndexHandler(t *testing.T) {
 	jsonString := string(data)
 	payload := []byte(jsonString)
 
-	req, err := http.NewRequest("PUT", "/persons/_doc/146", bytes.NewBuffer(payload))
+	req, err := http.NewRequest("POST", "/index", bytes.NewBuffer(payload))
 	if err != nil {
 		t.Fatal(err)
 	}
