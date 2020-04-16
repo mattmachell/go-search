@@ -1,2 +1,6 @@
-# go-search
-Experiment in a thin microservice go wrapper round and elastic search
+
+# go search
+
+Experiment in a thin microservice go wrapper around elastic search
+
+Needs a running ES index.
