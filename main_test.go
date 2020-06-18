@@ -83,10 +83,10 @@ func TestIndexHandler(t *testing.T) {
 	}
 
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(SearchHandler)
+	handler := http.HandlerFunc(IndexHandler)
 	handler.ServeHTTP(rr, req)
 
-	assert.Equal(t, rr.Code, http.StatusOK, "Got OK status")
+	assert.Equal(t, rr.Code, http.StatusAccepted, "Got OK status")
 
 }
 

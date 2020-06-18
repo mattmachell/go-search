@@ -124,7 +124,9 @@ func documentIndexer(s SearchDocument) error {
 		return errors.New("Error creating ES client")
 	}
 
-	data, _ := json.Marshal(s)
+	data, _ := json.Marshal(s.Source)
+
+	//log.Printf(string(data))
 
 	res, err := es.Index(
 		"persons",                       // Index name
@@ -132,10 +134,16 @@ func documentIndexer(s SearchDocument) error {
 		es.Index.WithDocumentID(s.ID),   // Document ID
 		es.Index.WithRefresh("true"),    // Refresh
 	)
+
+	log.Println(res)
+
 	if err != nil {
 		return errors.New("Error indexing document")
 	}
 	defer res.Body.Close()
+	if res.IsError() {
+		return errors.New("Error indexing document")
+	}
 	return nil
 }
 
