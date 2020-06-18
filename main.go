@@ -84,7 +84,7 @@ func SearchQuery(search Search) (results Results) {
 		log.Fatalf("Error parsing the response body: %s", err)
 	}
 
-	results.Count = int(resultMap["hits"].(map[string]interface{})["total"].(float64))
+	results.Count = int(resultMap["hits"].(map[string]interface{})["total"].(map[string]interface{})["value"].(float64))
 
 	log.Printf("got total of %d", results.Count)
 
